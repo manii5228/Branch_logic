@@ -1,0 +1,158 @@
+/* Neat & Classic Admin Dashboard CSS */
+
+:root {
+    --primary: #5a67d8;
+    --secondary: #4a5568;
+    --accent: #38a169;
+    --danger: #e53e3e;
+    --bg-light: #f7fafc;
+    --bg-white: #ffffff;
+    --text-dark: #2d3748;
+    --text-muted: #718096;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.analytics-container,
+.category-container,
+.job-form-container,
+.resume-database,
+.admin-section {
+    padding: 2rem;
+    background: var(--bg-white);
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin: 2rem auto;
+    max-width: 1000px;
+}
+
+h2, h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+/* Cards */
+.analytics-cards, .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.analytics-card, .category-card {
+    flex: 1 1 250px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: var(--bg-white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.analytics-card:hover, .category-card:hover {
+    transform: translateY(-5px);
+}
+
+.analytics-card h3 {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.analytics-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.analytics-card.students { border-left: 5px solid var(--primary); }
+.analytics-card.jobs { border-left: 5px solid #48BB78; }
+.analytics-card.applications { border-left: 5px solid #ED8936; }
+
+/* Form */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: var(--secondary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #cbd5e0;
+    background-color: var(--bg-light);
+    font-size: 1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.btn-submit, .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover, .btn-primary:hover {
+    background-color: #434190;
+}
+
+/* Tables */
+.admin-table, .resume-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td,
+.resume-table th, .resume-table td {
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.admin-table th, .resume-table th {
+    background-color: var(--bg-light);
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.btn-view {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.btn-view:hover {
+    background-color: #2f855a;
+}
+
+.no-resume {
+    color: #a0aec0;
+    font-style: italic;
+}

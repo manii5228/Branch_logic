@@ -1,0 +1,58 @@
+/* Centering the login card */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Login card styling */
+.login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+.login-card h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Form inputs */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* Submit button */
+.login-card .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+/* Link to register */
+.login-card .register-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+.login-card .register-link a {
+    color: #0d6efd;
+}
+.login-card .register-link a:hover {
+    text-decoration: underline;
+}

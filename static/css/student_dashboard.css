@@ -1,0 +1,28 @@
+.dashboard-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.profile-overview {
+    border-left: 4px solid #0d6efd;
+    background-color: #f9f9f9;
+}
+
+.recent-applications {
+    border-left: 4px solid #198754;
+    background-color: #fdfdfd;
+}
+
+.list-group-item {
+    font-weight: 500;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.75em;
+}

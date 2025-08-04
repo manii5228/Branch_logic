@@ -1,0 +1,27 @@
+.results-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.result-card {
+    border-left: 5px solid #198754;
+    transition: transform 0.2s ease-in-out;
+}
+
+.result-card h5 {
+    color: #198754;
+    font-weight: bold;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.result-card p {
+    margin: 6px 0;
+}
+
+.result-card .btn {
+    margin-top: 10px;
+}

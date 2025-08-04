@@ -1,0 +1,28 @@
+.search-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.search-form .form-control {
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.search-form .btn-primary {
+    padding: 8px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.results-section .candidate-card {
+    border-left: 5px solid #0d6efd;
+}
+
+.candidate-card h5 {
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.candidate-card p {
+    margin: 4px 0;
+}

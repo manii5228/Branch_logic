@@ -1,0 +1,36 @@
+/* Hero section styles */
+.hero-section {
+    background-image: url('/static/images/job-hero.jpg'); /* Replace with your own image */
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    position: relative;
+}
+
+.hero-section .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 60px 20px;
+    border-radius: 12px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    color: #ddd;
+}
+
+/* Features section */
+.features h4 {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.features p {
+    font-size: 1rem;
+    color: #555;
+}
