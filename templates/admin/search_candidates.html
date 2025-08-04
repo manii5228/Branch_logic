@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search_candidates.css') }}">
+
+<div class="search-container">
+    <h2 class="text-center mb-4">Search Candidates</h2>
+
+    <form method="GET" action="{{ url_for('search_candidates') }}" class="search-form mb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" name="skill" placeholder="Skill (e.g., Python)" class="form-control" value="{{ request.args.get('skill', '') }}">
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="education" placeholder="Education (e.g., B.Tech)" class="form-control" value="{{ request.args.get('education', '') }}">
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="experience" placeholder="Experience (e.g., 2 years)" class="form-control" value="{{ request.args.get('experience', '') }}">
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    {% if students %}
+        <div class="results-section">
+            {% for student in students %}
+                <div class="candidate-card shadow-sm p-3 mb-4 bg-white rounded">
+                    <h5>{{ student.name }}</h5>
+                    <p><strong>Email:</strong> {{ student.email }}</p>
+                    <p><strong>College:</strong> {{ student.college }}</p>
+                    <p><strong>Education:</strong> {{ student.education }}</p>
+                    <p><strong>Skills:</strong> {{ student.skills }}</p>
+                    {% if student.resume %}
+                        <a href="{{ url_for('view_resume', filename=student.resume) }}" target="_blank" class="btn btn-outline-secondary btn-sm">View Resume</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted text-center mt-5">No candidates found.</p>
+    {% endif %}
+</div>
+{% endblock %}

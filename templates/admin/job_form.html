@@ -1,0 +1,50 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}{{ 'Edit' if form.title.data else 'Post New' }} Job{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<div class="job-form-container">
+    <h2>{{ '✏️ Edit Job Posting' if form.title.data else '➕ Post a New Job' }}</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.title.label }}<br>
+            {{ form.title(class="form-control", placeholder="Job Title") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.description.label }}<br>
+            {{ form.description(class="form-control", rows="4", placeholder="Job Description") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.skills_required.label }}<br>
+            {{ form.skills_required(class="form-control", placeholder="e.g. Python, SQL, HTML") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.salary_range.label }}<br>
+            {{ form.salary_range(class="form-control", placeholder="e.g. 3-5 LPA") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.location.label }}<br>
+            {{ form.location(class="form-control", placeholder="e.g. Bangalore, Remote") }}
+        </div>
+
+       
+
+        <div class="form-group">
+            {{ form.deadline.label }}<br>
+            {{ form.deadline(class="form-control") }}
+        </div>
+
+        <button type="submit" class="btn-submit">
+            {{ 'Update Job' if form.title.data else 'Create Job' }}
+        </button>
+    </form>
+</div>
+{% endblock %}

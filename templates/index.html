@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+<div class="spline-container position-relative">
+    <!-- Spline 3D Embed -->
+    <iframe src="https://my.spline.design/100followers-9EpXoNq4Xj3k0lALkHr6YBMy/" 
+            frameborder="0"
+            class="spline-iframe"></iframe>
+            <iframe loading="lazy" ...></iframe>
+
+
+    <!-- Overlay content -->
+    <div class="overlay-content text-center text-white">
+        <h1 class="display-4 fw-bold">Find Your Dream Job</h1>
+        <p class="lead">Connect with top companies and kickstart your career today</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg mt-3">Get Started</a>
+    </div>
+</div>
+
+<div class="features container mt-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>Browse Jobs</h4>
+            <p>Explore listings from leading employers across industries.</p>
+        </div>
+        <div class="col-md-4">
+            <h4>Apply Easily</h4>
+            <p>Submit applications with just a few clicks.</p>
+        </div>
+        <div class="col-md-4">
+            <h4>Track Applications</h4>
+            <p>Get updates on the status of your job applications.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">Register</h2>
+<form method="POST" enctype="multipart/form-data" class="register-form" action="{{ url_for('register') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.username.label }} {{ form.username(class="form-control", value=form.username.data or '') }}
+    </div>
+    <div class="mb-3">
+        {{ form.email.label }} {{ form.email(class="form-control", value=form.email.data or '') }}
+    </div>
+    <div class="mb-3">
+        {{ form.name.label }} {{ form.name(class="form-control", value=form.name.data or '') }}
+    </div>
+    <div class="mb-3">
+        {{ form.password.label }} {{ form.password(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.resume.label }} {{ form.resume(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.role.label }} {{ form.role(class="form-select") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+{% endblock %}

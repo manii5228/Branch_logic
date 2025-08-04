@@ -1,0 +1,48 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Admin Analytics{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<div class="analytics-container">
+    <h2>📈 Portal Analytics</h2>
+
+    <div class="analytics-cards">
+        <div class="analytics-card students">
+            <h3>Total Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+        <div class="analytics-card jobs">
+            <h3>Total Jobs</h3>
+            <p>{{ total_jobs }}</p>
+        </div>
+        <div class="analytics-card applications">
+            <h3>Total Applications</h3>
+            <p>{{ total_applications }}</p>
+        </div>
+    </div>
+
+    <div class="charts-section">
+        <h3>🔍 Insights (Optional)</h3>
+        <p>Add chart.js or other graphs here for richer insights.</p>
+        <canvas id="barChart"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Students', 'Jobs', 'Applications'],
+            datasets: [{
+                label: 'Portal Stats',
+                data: [{{ total_students }}, {{ total_jobs }}, {{ total_applications }}],
+                backgroundColor: ['#5A67D8', '#48BB78', '#ED8936']
+            }]
+        }
+    });
+</script>
+{% endblock %}

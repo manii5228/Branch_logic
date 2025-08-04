@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/job_detail.css') }}">
+
+<div class="job-detail-card shadow-lg p-4 mb-5 bg-white rounded">
+    <h2 class="mb-3 text-primary">{{ job.title }}</h2>
+    <h5 class="text-muted">Posted by {{ job.recruiter.name }} @ {{ job.recruiter.company_name }}</h5>
+
+    <hr>
+
+    <p><strong>Location:</strong> {{ job.location or 'Remote' }}</p>
+    <p><strong>Salary:</strong> {{ job.salary_range or 'Not specified' }}</p>
+    <p><strong>Category:</strong> {{ job.category.name if job.category else 'General' }}</p>
+    <p><strong>Deadline:</strong> {{ job.deadline.strftime('%d %b, %Y') if job.deadline else 'N/A' }}</p>
+    <p><strong>Required Skills:</strong> {{ job.skills_required }}</p>
+
+    <hr>
+
+    <h4>Description</h4>
+    <p>{{ job.description }}</p>
+
+    {% if session.get('student_id') %}
+        <a href="{{ url_for('apply_job', job_id=job.job_id) }}" class="btn btn-success mt-3">Apply Now</a>
+    {% else %}
+        <p class="text-danger mt-4">Please <a href="{{ url_for('login') }}">login</a> as a student to apply.</p>
+    {% endif %}
+</div>
+{% endblock %}

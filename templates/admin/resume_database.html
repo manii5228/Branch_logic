@@ -1,0 +1,45 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Resume Database{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<div class="resume-database">
+    <h2>📄 Resume Database</h2>
+
+    {% if students %}
+    <table class="resume-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Qualification</th>
+                <th>Skills</th>
+                <th>Resume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.qualification }}</td>
+                <td>{{ student.skills }}</td>
+                <td>
+                    {% if student.resume %}
+                    <a href="{{ url_for('static', filename='resumes/' ~ student.resume) }}" target="_blank" class="btn-view">View</a>
+                    {% else %}
+                    <span class="no-resume">No Resume</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No students found in the database.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update_applications.css') }}">
+
+<div class="update-app-container">
+    <h2 class="text-center mb-4">Update Application Status</h2>
+
+    <div class="card shadow-sm p-4">
+        <h5>Applicant: {{ application.student.name }}</h5>
+        <p><strong>Email:</strong> {{ application.student.email }}</p>
+        <p><strong>Applied for:</strong> {{ application.job.title }}</p>
+        <p><strong>Current Status:</strong> <span class="badge bg-info">{{ application.status }}</span></p>
+        <p><strong>Resume:</strong> 
+            {% if application.student.resume %}
+                <a class="btn btn-sm btn-outline-primary" href="{{ url_for('view_resume', filename=application.student.resume) }}" target="_blank">View Resume</a>
+            {% else %}
+                <span class="text-muted">Not Uploaded</span>
+            {% endif %}
+        </p>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.status.label(class="form-label") }}
+                {{ form.status(class="form-select") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.remarks.label(class="form-label") }}
+                {{ form.remarks(class="form-control", rows="3") }}
+            </div>
+
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-success") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Manage Tags{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<div class="admin-section">
+    <h2>🏷️ Manage Tags</h2>
+
+    <form method="POST" class="admin-form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control", placeholder="Enter new tag name") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Tag</button>
+    </form>
+
+    <hr>
+
+    <h3>Existing Tags</h3>
+    {% if tags %}
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tag Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tag in tags %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ tag.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No tags available.</p>
+    {% endif %}
+</div>
+{% endblock %}

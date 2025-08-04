@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view_application.css') }}">
+
+<div class="view-application-container">
+    <h2 class="text-center mb-4">Application Details</h2>
+
+    <div class="card p-4 shadow-sm">
+        <h5 class="section-title">Student Information</h5>
+        <p><strong>Name:</strong> {{ application.student.name }}</p>
+        <p><strong>Email:</strong> {{ application.student.email }}</p>
+        <p><strong>Qualification:</strong> {{ application.student.qualification or 'N/A' }}</p>
+        <p><strong>Skills:</strong> {{ application.student.skills or 'N/A' }}</p>
+        <p><strong>Resume:</strong>
+            {% if application.student.resume %}
+                <a href="{{ url_for('view_resume', filename=application.student.resume) }}" target="_blank" class="btn btn-sm btn-outline-primary">View Resume</a>
+            {% else %}
+                <span class="text-muted">No Resume Uploaded</span>
+            {% endif %}
+        </p>
+
+        <hr>
+
+        <h5 class="section-title">Job Information</h5>
+        <p><strong>Title:</strong> {{ application.job.title }}</p>
+        <p><strong>Location:</strong> {{ application.job.location }}</p>
+        <p><strong>Skills Required:</strong> {{ application.job.skills_required or 'N/A' }}</p>
+        <p><strong>Posted On:</strong> {{ application.job.posted_at.strftime('%Y-%m-%d') }}</p>
+
+        <hr>
+
+        <h5 class="section-title">Application Status</h5>
+        <p><strong>Applied At:</strong> {{ application.applied_at.strftime('%Y-%m-%d %H:%M') }}</p>
+        <p><strong>Status:</strong> <span class="badge bg-info text-dark">{{ application.status }}</span></p>
+        {% if application.remarks %}
+            <p><strong>Remarks:</strong> {{ application.remarks }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

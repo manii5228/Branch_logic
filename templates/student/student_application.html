@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/student_application.css') }}">
+
+<div class="application-container">
+    <h2 class="text-center mb-4">My Applications</h2>
+
+    {% if applications %}
+        <div class="row">
+            {% for app in applications %}
+                <div class="col-md-6 mb-4">
+                    <div class="application-card shadow-sm p-3 bg-white rounded">
+                        <h5>{{ app.job.title }}</h5>
+                        <p><strong>Company:</strong> {{ app.job.recruiter.company_name }}</p>
+                        <p><strong>Location:</strong> {{ app.job.location }}</p>
+                        <p><strong>Status:</strong> 
+                            <span class="status {{ app.status|lower }}">
+                                {{ app.status.capitalize() }}
+                            </span>
+                        </p>
+                        <p><strong>Applied On:</strong> {{ app.applied_at.strftime('%d %b %Y') }}</p>
+                        <a href="{{ url_for('job_detail', job_id=app.job.job_id) }}" class="btn btn-sm btn-outline-secondary">View Job</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">You haven't applied to any jobs yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

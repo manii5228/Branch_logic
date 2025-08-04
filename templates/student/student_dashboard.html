@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/student_dashboard.css') }}">
+
+<div class="dashboard-container">
+    <h2 class="text-center mb-4">Welcome, {{ student.name }}!</h2>
+
+    <!-- Profile Overview -->
+    <div class="profile-overview card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Profile Summary</h5>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <p><strong>Qualification:</strong> {{ student.qualification or 'Not Provided' }}</p>
+            <p><strong>Skills:</strong> {{ student.skills or 'Not Provided' }}</p>
+            <p><strong>Resume:</strong> 
+                {% if student.resume %}
+                    <a href="{{ url_for('download_resume', filename=student.resume) }}" class="btn btn-sm btn-outline-primary">Download Resume</a>
+                {% else %}
+                    Not Uploaded
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Recent Applications -->
+    <div class="recent-applications card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Recent Applications</h5>
+            {% if recent_applications %}
+                <ul class="list-group">
+                    {% for app in recent_applications %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ app.job.title }} -Posted by Admin
+                            <span class="badge bg-secondary">{{ app.status }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('student_applications', student_id=student.student_id) }}" class="btn btn-link mt-2">View All Applications</a>
+            {% else %}
+                <p class="text-muted">You haven’t applied to any jobs yet.</p>
+            {% endif %}
+        </div>
+    </div>
+  
+</div>
+<!-- Available Jobs -->
+<div class="available-jobs card shadow-sm mt-5">
+    <div class="card-body">
+        <h5 class="card-title">Available Jobs</h5>
+        {% if jobs %}
+            <ul class="list-group">
+                {% for job in jobs %}
+                    <li class="list-group-item">
+                        <div class="d-flex flex-column">
+                            <h6 class="mb-1">{{ job.title }}</h6>
+                            <p class="mb-1 text-muted">{{ job.description }}</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <small><strong>Location:</strong> {{ job.location }}</small>
+                                <small><strong>Salary:</strong> {{ job.salary_range }}</small>
+                                <small><strong>Deadline:</strong> {{ job.deadline.strftime('%Y-%m-%d') }}</small>
+                            </div>
+                            <form method="POST" action="{{ url_for('apply_job', job_id=job.job_id, student_id=student.student_id) }}" class="mt-2">
+                                <button type="submit" class="btn btn-sm btn-outline-success">Apply</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No jobs available right now.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+</div>
+{% endblock %}

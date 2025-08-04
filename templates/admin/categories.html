@@ -1,0 +1,32 @@
+v{% extends 'admin/base.html' %}
+
+{% block title %}Manage Categories{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<div class="category-container">
+    <h2>📁 Manage Job Categories</h2>
+
+    <div class="category-form-card">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name(class="form-control", placeholder="Enter new category") }}
+            </div>
+            <button type="submit" class="btn-submit">➕ Add Category</button>
+        </form>
+    </div>
+
+    <h3>📂 Existing Categories</h3>
+    <div class="category-list">
+        {% for category in categories %}
+        <div class="category-card">
+            <span class="category-name">{{ category.name }}</span>
+        </div>
+        {% else %}
+        <p>No categories found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
